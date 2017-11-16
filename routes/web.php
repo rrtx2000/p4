@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+    echo('test');
+});
+
+Route::get('/item', 'ItemController@test');
+
+
 Route::get('/debug', function () {
 
     $debug = [

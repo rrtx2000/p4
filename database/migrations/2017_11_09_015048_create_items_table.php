@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             
-            $table->string('item');
+            $table->string('itemname');
             $table->boolean('include')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('sortorder')->nullable();
