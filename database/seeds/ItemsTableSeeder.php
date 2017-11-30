@@ -37,5 +37,32 @@ class ItemsTableSeeder extends Seeder
             'quantity' => 12,
             'sortorder' => 3
         ]);
+        
+        Item::insert([
+            'created_at' => Carbon\Carbon::now()->subDays(3)->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->subDays(3)->toDateTimeString(),
+            'itemname' => 'cheese',
+            'include' => 1,
+            'quantity' => 2,
+            'sortorder' => 4
+        ]);
+        
+        Item::insert([
+            'created_at' => Carbon\Carbon::now()->subDays(3)->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->subDays(3)->toDateTimeString(),
+            'itemname' => 'boost',
+            'include' => 1,
+            'quantity' => 2,
+            'sortorder' => 5
+        ]);
+        
+        Item::insert([
+            'created_at' => Carbon\Carbon::now()->subDays(3)->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->subDays(3)->toDateTimeString(),
+            'itemname' => 'Hamburger',
+            'include' => 0,
+            'quantity' => 2,
+            'sortorder' => 6
+        ]);
     }
 }

@@ -12,14 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return view('index');
 });
 
-Route::get('/test', function () {
-    echo('test');
+Route::get('/env', function () {
+    dump(config('app.name'));
+    dump(config('app.env'));
+    dump(config('app.debug'));
+    dump(config('app.url'));
 });
 
-Route::get('/item', 'ItemController@test');
+Route::get('/test', 'ItemController@test');
+
+Route::get('/all', 'ItemController@all');
 
 
 Route::get('/debug', function () {
