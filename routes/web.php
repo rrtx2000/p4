@@ -27,6 +27,7 @@ Route::get('/test', 'ItemController@test');
 
 Route::get('/all', 'ItemController@all');
 
+Route::get('/', 'ItemController@all');
 
 Route::get('/debug', function () {
 
