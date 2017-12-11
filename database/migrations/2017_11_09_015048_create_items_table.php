@@ -19,10 +19,7 @@ class CreateItemsTable extends Migration
             
             $table->string('itemname');
             $table->boolean('include')->nullable();
-            $table->integer('quantity')->nullable();
-            $table->integer('sortorder')->nullable();
-            
-            
+            //$table->integer('quantity')->nullable();
         });
     }
 

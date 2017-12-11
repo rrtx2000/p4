@@ -23,6 +23,10 @@ Route::get('/env', function () {
     dump(config('app.url'));
 });
 
+Route::get('/lntest1', 'ListnameController@test1');
+Route::get('/lntest2', 'ListnameController@test2');
+
+
 Route::get('/test', 'ItemController@test');
 
 Route::get('/all', 'ItemController@all');
