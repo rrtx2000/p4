@@ -8,19 +8,47 @@ use App\Item;
 
 class ListnameController extends Controller
 {
+    
+    public function updatelistname(Request $request, $id)
+    {
+        /*
+            $this->validate($request, [
+                'title' => 'required|min:3',
+                'author' => 'required',
+                'published' => 'required|min:4|numeric',
+                'cover' => 'required|url',
+                'purchase_link' => 'required|url',
+            ]);
+        */
+        
+        //$book = Book::find($id);
+        //$book = Book::find($request->id);
+        //$book->tags()->sync($request->input('tags'));
+        
+        
+        $listname = Listname::find($id);
+        $listname->items()->sync($request->input('items'));
+        $listname->save();
+        
+        return redirect('/')->with('alert', 'Your changes were saved.');
+    }
+    
     public function showalist(Request $request)
     {
-        $nameoflist = $request->input('nameoflist');
-        $onlySelected = $request->input('onlySelected');
         
-        if (isset($onlySelected)){
+        $nameoflist = $request->input('nameoflist');
+        //echo($request);exit;
+        
+        //$onlySelected = $request->input('onlySelected');
+        
+        //if (isset($onlySelected)){
             //show only the selected items
-            $onlySelected = true;
-        }
-        else {
+        //    $onlySelected = true;
+        //}
+        //else {
             //show the whole list of items
-            $onlySelected = false;
-        }
+        //    $onlySelected = false;
+        //}
         
         
         //$toShow = new Item();
@@ -31,7 +59,7 @@ class ListnameController extends Controller
         //dump($allItemsARR);exit;
         
         $listname = Listname::where('listname', '=', $nameoflist)->first();     //this gets the object for a listname
-        //echo ("id=" . $listname['id'] . "<br/>listname=" . $listname['listname'] . "<br/><br/>");
+        echo ("File: " . __FILE__ . "<br/>Line: " . __LINE__ . "<br/>id=" . $listname['id'] . "<br/>listname=" . $listname['listname'] . "<br/><br/>");
         
         
         //exit;
@@ -55,9 +83,9 @@ class ListnameController extends Controller
         //echo("nameoflist:<br/>" . $nameoflist); exit;
         return view('showalist')->with([
             'nameoflist' => $nameoflist,
-            'onlySelected' => $onlySelected,
             'listitemsARR' => $listitemsARR,
-            'allItemsARR' => $allItemsARR
+            'allItemsARR' => $allItemsARR,
+            'listitemId' => $listname['id']
         ]);
     
     }

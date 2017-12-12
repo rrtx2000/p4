@@ -12,31 +12,18 @@
 @endsection
 
 @section('content')
-    Show a list for {{$nameoflist}}:
-    
-    @foreach($listitemsARR as $listitem)
-        <li>{{ $listitem }} </li>
-    @endforeach
-    
-    <br/>
-    All items<br/>
 
-    @foreach($allItemsARR as $id => $allitem)
-        <li>{{ $allitem }}</li>
-    @endforeach
-    
-    <hr/>
-    
-    @foreach ($allItemsARR as $id => $name)
-        <input
-            type='checkbox'
-            value='{{ $id }}'
-            name='items[]'
-            {{ (isset($listitemsARR) and in_array($name, $listitemsARR)) ? 'CHECKED' : '' }}
-        >
-        {{ $name }} <br>
-    @endforeach
-
+    <form method='POST' action='/updatelistname/{{ $listitemId }}'>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        @foreach ($allItemsARR as $id => $name)
+            <input type='checkbox' value='{{ $id }}' name='items[]'
+                {{ (isset($listitemsARR) and in_array($name, $listitemsARR)) ? 'CHECKED' : '' }}
+            >
+            {{ $name }}
+            <br>
+        @endforeach
+        <input type='submit' value='Save changes'>
+    </form>
 
 @endsection
 
