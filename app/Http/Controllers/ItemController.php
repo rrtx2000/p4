@@ -7,6 +7,14 @@ use App\Item;
 
 class ItemController extends Controller
 {
+    
+    public function getall(){
+        //$items = new Item();
+        
+        echo(__LINE__);exit;
+        return Item::all();
+    }
+    
     public function deleteitem(Request $request)
     {
         $id = $request->input('id');
@@ -65,7 +73,7 @@ class ItemController extends Controller
             'items' => $items
         ]);
         
-        dump($items->toArray());
+        //dump($items->toArray());
     }
     
     public function manage()
