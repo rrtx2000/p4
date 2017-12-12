@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->timestamps();
             
             $table->string('itemname');
-            $table->boolean('include')->nullable();
+            //$table->boolean('include')->nullable();       //not needed, part of the many to many relationship
             //$table->integer('quantity')->nullable();
         });
     }

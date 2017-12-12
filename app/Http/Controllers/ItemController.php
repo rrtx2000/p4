@@ -7,6 +7,48 @@ use App\Item;
 
 class ItemController extends Controller
 {
+    public function deleteitem(Request $request)
+    {
+        $id = $request->input('id');
+        //echo("id = " . $id); exit;
+        
+        $itemToDelete = Item::find($id);
+
+        if (!$itemToDelete) {
+            return redirect('/manageitems')->with('alert', 'Item not found');
+        }
+        
+        
+        $itemToDelete->listnames()->detach();
+        
+        $itemToDelete->delete();
+
+        return redirect('/manageitems');
+    }
+    
+    public function additem(Request $request){
+        //echo($request);
+        $itemToAdd = $request->input('itemname');
+        //echo("request itemname = " . $itemToAdd);
+        //exit;
+        
+        /*
+            $book = new Book();
+            $book->title = $request->input('title');
+            $book->author = $request->input('author');
+            $book->published = $request->input('published');
+            $book->cover = $request->input('cover');
+            $book->purchase_link = $request->input('purchase_link');
+            $book->save();
+         */
+        
+        $newitem = new Item();
+        $newitem->itemname = $itemToAdd;
+        $newitem->save();
+
+        return redirect('/manageitems');
+    }
+    
     public function test()
     {
         echo ('itemcontroller test');
@@ -25,7 +67,18 @@ class ItemController extends Controller
         
         dump($items->toArray());
     }
-
+    
+    public function manage()
+    {
+        $items = Item::all();
+        
+        //manageitems view
+        return view('manageitems')->with([
+            'items' => $items
+        ]);
+        
+        //dump($items->toArray());
+    }
     
     public function index()
     {

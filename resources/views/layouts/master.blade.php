@@ -12,18 +12,21 @@
 
 </head>
 <body>
-<?php
-echo("test");
-//<link type="text/css" rel="stylesheet" href="<https://' . $_SERVER['SERVER_NAME'] . '/includes/css/generic.css?v=' . filemtime($_SERVER[>"DOCUMENT_ROOT"] . '/includes/css/generic.css') . '" />'
 
-echo filemtime($_SERVER['DOCUMENT_ROOT'] . '\\css\\main.css');
-
-?>
 	<header>
 		
 	</header>
 
 	<section>
+		<h1 class='mycenter'>Alan Martinson - P4 For CSCI E15</h1>
+		@yield('topofpage')
+	
+		<a href="/">Home</a>  
+		<br/><a href="/manageitems">Manage Items</a>
+		<br/><a href="/managelistnames">Manage List Names</a>
+		<br/>
+		<br/>
+    
 		@yield('content')
 	</section>
 
