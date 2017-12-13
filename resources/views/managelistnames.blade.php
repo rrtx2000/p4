@@ -32,7 +32,7 @@
     <br/>
     
     <form action="/addlistname">
-        Add item: <input type="text" name="listname">
+        Add List Name: <input type="text" name="listname">
         <input type="submit" value="Add">
     </form>
         
