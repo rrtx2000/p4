@@ -22,6 +22,8 @@ Route::get('/xxx', function () {
 //Route::get('/all', 'ItemController@all');
 //Route::get('/', 'ItemController@all');
 Route::get('/', 'ListnameController@alllistnames');         //landing page - show the manage items, managelists, listnames
+Route::get('/index', 'ListnameController@alllistnames');
+
 Route::get('/showalist', 'ListnameController@showalist');
 Route::POST('/updatelistname/{id}', 'ListnameController@updatelistname');
 
