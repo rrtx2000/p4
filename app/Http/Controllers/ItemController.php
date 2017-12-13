@@ -8,62 +8,38 @@ use App\Item;
 class ItemController extends Controller
 {
     
-    public function getall(){
-        //$items = new Item();
-        
-        echo(__LINE__);exit;
-        return Item::all();
-    }
-    
     public function deleteitem(Request $request)
     {
         $id = $request->input('id');
-        //echo("id = " . $id); exit;
-        
+         
         $itemToDelete = Item::find($id);
-
+        
         if (!$itemToDelete) {
             return redirect('/manageitems')->with('usermessage', 'Item not found');
         }
         
-        
-        $itemToDelete->listnames()->detach();
+        $itemToDelete->listnames()->detach();       //remove the many to many relationship if it exists
         
         $itemToDelete->delete();
-
-        return redirect('/manageitems');
+        
+        return redirect('/manageitems')->with('usermessage', $itemToDelete->itemname . ' was deleted');
     }
     
-    public function additem(Request $request){
-        //echo($request);
-        $itemToAdd = $request->input('itemname');
-        //echo("request itemname = " . $itemToAdd);
-        //exit;
+    public function additem(Request $request)
+    {
+        $this->validate($request, [
+            'itemname' => 'required|min:2',
+        ]);
         
-        /*
-            $book = new Book();
-            $book->title = $request->input('title');
-            $book->author = $request->input('author');
-            $book->published = $request->input('published');
-            $book->cover = $request->input('cover');
-            $book->purchase_link = $request->input('purchase_link');
-            $book->save();
-         */
+        $itemToAdd = $request->input('itemname');
         
         $newitem = new Item();
         $newitem->itemname = $itemToAdd;
         $newitem->save();
-
-        return redirect('/manageitems');
+        
+        return redirect('/manageitems')->with('usermessage', $itemToAdd . ' was added');
     }
     
-    public function test()
-    {
-        echo ('itemcontroller test');
-        $items = Item::all();
-        dump($items->toArray());
-    }
-
     public function all()
     {
         $items = Item::all();
@@ -72,8 +48,6 @@ class ItemController extends Controller
         return view('index')->with([
             'items' => $items
         ]);
-        
-        //dump($items->toArray());
     }
     
     public function manage()
@@ -85,7 +59,6 @@ class ItemController extends Controller
             'items' => $items
         ]);
         
-        //dump($items->toArray());
     }
     
     public function index()
