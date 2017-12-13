@@ -1,16 +1,3 @@
-<?php 
-
-    $showit = true;
-    $showit = false;
-    if ($showit){
-	echo("<hr>" . __LINE__ . ") Get contents:"); echo("<pre>" . print_r($_GET, 1) . "</pre>");
-	echo("<br>" . __LINE__ . ") Post contents:"); echo("<pre>" . print_r($_POST, 1) . "</pre><hr/>");
-	echo("<br>items contents:"); echo("<pre>" . print_r($items, 1) . "</pre>");
-	//echo("<br>listnames contents:"); echo("<pre>" . print_r($listnames, 1) . "</pre>");
-	exit;
-    }
-?>
-
 @extends('layouts.master')
 
 @section('title')

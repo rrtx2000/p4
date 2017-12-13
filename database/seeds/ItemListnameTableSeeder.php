@@ -13,57 +13,19 @@ class ItemListnameTableSeeder extends Seeder
      */
     public function run()
     {
-        
-        /*
-            # First, create an array of all the books we want to associate tags with
-            # The *key* will be the book title, and the *value* will be an array of tags.
-            # Note: purposefully omitting the Harry Potter books to demonstrate untagged books
-            $books =[
-                'The Great Gatsby' => ['novel', 'fiction', 'classic', 'wealth'],
-                'The Bell Jar' => ['novel', 'fiction', 'classic','women'],
-                'I Know Why the Caged Bird Sings' => ['autobiography', 'nonfiction', 'classic', 'women']
-            ];
-            
-            # Now loop through the above array, creating a new pivot for each book to tag
-            foreach ($books as $title => $tags) {
-                # First get the book
-                $book = Book::where('title', 'like', $title)->first();
-                
-                # Now loop through each tag for this book, adding the pivot
-                foreach ($tags as $tagName) {
-                    $tag = Tag::where('name', 'LIKE', $tagName)->first();
-                    
-                    # Connect this tag to this book
-                    $book->tags()->save($tag);
-                }
-            }
-         */
-        
-        
-        
             $listname =[
                 'Laurel' => ['milk', 'bread', 'cheese'],
                 'Hardy' => ['Hamburger', 'bread', 'cheese', 'eggs']
             ];
             
-            # Now loop through the above array, creating a new pivot for each book to tag
+            //loop through the above array, creating a new pivot entry
             foreach ($listname as $title => $items) {
-                # First get the book
                 $ln = Listname::where('listname', 'like', $title)->first();
                 
-                # Now loop through each tag for this book, adding the pivot
                 foreach ($items as $itemName) {
                     $item = Item::where('itemname', 'LIKE', $itemName)->first();
-                    
-                    # Connect this tag to this book
                     $ln->items()->save($item);
                 }
             }
-        
-        
-        
-        
-        
-        
     }
 }

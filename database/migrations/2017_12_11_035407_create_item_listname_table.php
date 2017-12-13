@@ -19,13 +19,11 @@ class CreateItemListnameTable extends Migration
             
             $table->integer('item_id')->unsigned();
             $table->integer('listname_id')->unsigned();
-    
+            
             # Make foreign keys
             $table->foreign('item_id')->references('id')->on('items');
             $table->foreign('listname_id')->references('id')->on('listnames');
         });
-        
-        
     }
 
     /**
