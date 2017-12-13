@@ -16,11 +16,6 @@ Route::get('/xxx', function () {
     return view('index');
 });
 
-
-
-
-//Route::get('/all', 'ItemController@all');
-//Route::get('/', 'ItemController@all');
 Route::get('/', 'ListnameController@alllistnames');         //landing page - show the manage items, managelists, listnames
 Route::get('/index', 'ListnameController@alllistnames');
 
@@ -32,15 +27,10 @@ Route::get('/additem', 'ItemController@additem');
 Route::get('/deleteitem', 'ItemController@deleteitem');
 Route::get('/edititem', 'ItemController@edititem');
 
-
 Route::get('/managelistnames', 'ListnameController@manage');
 Route::get('/addlistname', 'ListnameController@addlistname');
 Route::get('/deletelistname', 'ListnameController@deletelistname');
 Route::get('/editlistname', 'ListnameController@editlistname');
-
-
-
-Route::get('/testadditem', 'ItemController@additem');
 
 Route::get('/env', function () {
     dump(config('app.name'));
@@ -51,9 +41,6 @@ Route::get('/env', function () {
 
 Route::get('/lntest1', 'ListnameController@test1');
 Route::get('/lntest2', 'ListnameController@test2');
-
-
-Route::get('/test', 'ItemController@test');
 
 Route::get('/debug', function () {
 
