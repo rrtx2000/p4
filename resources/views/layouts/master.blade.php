@@ -12,26 +12,31 @@
 
 </head>
 <body>
+    @if(session('usermessage'))
+        <div class='usermessage'>
+            {{ session('usermessage') }}
+        </div>
+    @endif
 
-	<header>
-		
-	</header>
+    <header>
+    </header>
 
-	<section>
-		<h1 class='mycenter'>Alan Martinson - P4 For CSCI E15</h1>
-		@yield('topofpage')
-	
-		<a href="/">Home</a>  
-		<br/><a href="/manageitems">Manage Items</a>
-		<br/><a href="/managelistnames">Manage List Names</a>
-		<br/>
-		<br/>
-    
-		@yield('content')
-	</section>
+    <section>
+	    <h1 class='mycenter'>Alan Martinson - P4 For CSCI E15</h1>
+	    @yield('topofpage')
+	    <div class="mycenter">
+		    <a href="/" class="button">Home</a>  
+		    <a href="/manageitems" class="button">Manage Items</a>
+		    <a href="/managelistnames" class="button">Manage List Names</a>
+	    </div>
+	    <br/>
+	    <br/>
 
-	<footer>
-	</footer>
+	    @yield('content')
+    </section>
+
+    <footer>
+    </footer>
 
     @stack('body')
 

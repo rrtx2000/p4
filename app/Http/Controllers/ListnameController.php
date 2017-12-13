@@ -30,7 +30,7 @@ class ListnameController extends Controller
         $listname->items()->sync($request->input('items'));
         $listname->save();
         
-        return redirect('/')->with('alert', 'Your changes were saved.');
+        return redirect('/')->with('usermessage', 'Your changes were saved');
     }
     
     public function showalist(Request $request)
@@ -59,7 +59,7 @@ class ListnameController extends Controller
         //dump($allItemsARR);exit;
         
         $listname = Listname::where('listname', '=', $nameoflist)->first();     //this gets the object for a listname
-        echo ("File: " . __FILE__ . "<br/>Line: " . __LINE__ . "<br/>id=" . $listname['id'] . "<br/>listname=" . $listname['listname'] . "<br/><br/>");
+        #echo ("File: " . __FILE__ . "<br/>Line: " . __LINE__ . "<br/>id=" . $listname['id'] . "<br/>listname=" . $listname['listname'] . "<br/><br/>");
         
         
         //exit;
@@ -110,7 +110,7 @@ class ListnameController extends Controller
         $itemToDelete = Listname::find($id);
 
         if (!$itemToDelete) {
-            return redirect('/managelistnames')->with('alert', 'Listname not found');
+            return redirect('/managelistnames')->with('usermessage', 'That listname was not found');
         }
         
         

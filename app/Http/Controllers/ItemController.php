@@ -23,7 +23,7 @@ class ItemController extends Controller
         $itemToDelete = Item::find($id);
 
         if (!$itemToDelete) {
-            return redirect('/manageitems')->with('alert', 'Item not found');
+            return redirect('/manageitems')->with('usermessage', 'Item not found');
         }
         
         
