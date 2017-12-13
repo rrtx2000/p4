@@ -6,7 +6,11 @@
 	</title>
 	
 	<meta charset='utf-8'>
-	<?php $cssFilemtime = filemtime($_SERVER['DOCUMENT_ROOT'] . '\\css\\main.css');?>
+	<?php
+		//not working on digitalocean
+		//$cssFilemtime = filemtime($_SERVER['DOCUMENT_ROOT'] . '\\css\\main.css');
+		$cssFilemtime = 1;
+	?>
 	<link href="css/main.css?v={{$cssFilemtime}}" type='text/css' rel='stylesheet'>
 	@stack('head')
 
