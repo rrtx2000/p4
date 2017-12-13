@@ -40,6 +40,11 @@ class ItemController extends Controller
         return redirect('/manageitems')->with('usermessage', $itemToAdd . ' was added');
     }
     
+    public function edititem(Request $request)
+    {
+        return redirect('/manageitems')->with('usermessage', 'The edit item functionality is not completed yet');
+    }
+    
     public function all()
     {
         $items = Item::all();

@@ -9,7 +9,7 @@
 	<?php
 		//not working on digitalocean
 		//$cssFilemtime = filemtime($_SERVER['DOCUMENT_ROOT'] . '\\css\\main.css');
-		$cssFilemtime = 1;
+		$cssFilemtime = 2;
 	?>
 	<link href="css/main.css?v={{$cssFilemtime}}" type='text/css' rel='stylesheet'>
 	@stack('head')

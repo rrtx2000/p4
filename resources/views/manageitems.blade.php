@@ -12,11 +12,23 @@
 @endsection
 
 @section('content')
-    
-    @foreach($items as $item)
-        <li>{{ $item['itemname'] }}<a href='deleteitem?id={{ $item['id'] }}'> Delete</a></li>
-    @endforeach
-            
+    <div class="divTable">
+        <div class="divTableBody">
+            <div class="divTableRow headerrow">
+                <div class="divTableCell">Item Name</div>
+                <div class="divTableCell">Edit</div>
+                <div class="divTableCell">Delete</div>
+            </div>
+
+            @foreach($items as $item)
+                <div class="divTableRow">
+                    <div class="divTableCell">{{ $item['itemname'] }}</div>
+                    <div class="divTableCell"><a href='edititem?id={{ $item['id'] }}'> Edit</a></div>
+                    <div class="divTableCell"><a href='deleteitem?id={{ $item['id'] }}'> Delete</a></div>
+                </div>
+            @endforeach
+        </div>
+    </div>
     <br/>
     
     <form action="/additem">

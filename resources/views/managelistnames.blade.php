@@ -12,10 +12,23 @@
 @endsection
 
 @section('content')
-    @foreach($listnames as $listname)
-        <li>{{ $listname['listname'] }}<a href='deletelistname?id={{ $listname['id'] }}'> Delete</a></li>
-    @endforeach
-  
+      <div class="divTable">
+        <div class="divTableBody">
+            <div class="divTableRow headerrow">
+                <div class="divTableCell">List Name</div>
+                <div class="divTableCell">Edit</div>
+                <div class="divTableCell">Delete</div>
+            </div>
+
+            @foreach($listnames as $listname)
+                <div class="divTableRow">
+                    <div class="divTableCell">{{ $listname['listname'] }}</div>
+                    <div class="divTableCell"><a href='editlistname?id={{ $listname['id'] }}'> Edit</a></div>
+                    <div class="divTableCell"><a href='deletelistname?id={{ $listname['id'] }}'> Delete</a></div>
+                </div>
+            @endforeach
+        </div>
+    </div>
     <br/>
     
     <form action="/addlistname">

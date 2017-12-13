@@ -86,6 +86,11 @@ class ListnameController extends Controller
         return redirect('/managelistnames')->with('usermessage', $itemToAdd . ' was added');
     }
     
+    public function editlistname(Request $request)
+    {
+        return redirect('/managelistnames')->with('usermessage', 'The edit listname is not completed yet');
+    }
+    
     public function manage()
     {
         $listnames = Listname::all();

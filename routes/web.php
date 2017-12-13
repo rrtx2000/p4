@@ -30,11 +30,13 @@ Route::POST('/updatelistname/{id}', 'ListnameController@updatelistname');
 Route::get('/manageitems', 'ItemController@manage');
 Route::get('/additem', 'ItemController@additem');
 Route::get('/deleteitem', 'ItemController@deleteitem');
+Route::get('/edititem', 'ItemController@edititem');
 
 
 Route::get('/managelistnames', 'ListnameController@manage');
 Route::get('/addlistname', 'ListnameController@addlistname');
 Route::get('/deletelistname', 'ListnameController@deletelistname');
+Route::get('/editlistname', 'ListnameController@editlistname');
 
 
 
