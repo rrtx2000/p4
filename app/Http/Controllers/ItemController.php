@@ -44,7 +44,6 @@ class ItemController extends Controller
     {
         $items = Item::all();
         
-        //resources/views/index.blade.php
         return view('index')->with([
             'items' => $items
         ]);
@@ -54,7 +53,6 @@ class ItemController extends Controller
     {
         $items = Item::all();
         
-        //manageitems view
         return view('manageitems')->with([
             'items' => $items
         ]);

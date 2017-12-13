@@ -19,17 +19,20 @@ class ListnameController extends Controller
     
     public function showalist(Request $request)
     {
+        
+        $this->validate($request, [
+            'nameoflist' => 'required',
+        ]);
+        
         $nameoflist = $request->input('nameoflist');
         
-        $allItemsARR = Item::getAllItemsArray();        //all the items, regardless of if a particular list has it selected
-        //dump($allItemsARR);exit;
+        $allItemsARR = Item::getAllItemsArray();    //all the items, regardless of if a particular list has it selected
         
         $listname = Listname::where('listname', '=', $nameoflist)->first();     //this gets the object for a listname
-        #echo ("File: " . __FILE__ . "<br/>Line: " . __LINE__ . "<br/>id=" . $listname['id'] . "<br/>listname=" . $listname['listname'] . "<br/><br/>");
-        //exit;
         
         $listitemsARR = [];
         
+        //build up an array of the items for this one listname
         foreach ($listname->items as $item) {
             $listitemsARR[$item['id']] = $item->itemname;
         }
